@@ -8,17 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		15BF7FE52AE19BC2004C3A62 /* StarWarsCardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF7FE42AE19BC2004C3A62 /* StarWarsCardsApp.swift */; };
-		15BF7FE72AE19BC2004C3A62 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF7FE62AE19BC2004C3A62 /* ContentView.swift */; };
+		15BF7FE72AE19BC2004C3A62 /* CardsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF7FE62AE19BC2004C3A62 /* CardsListView.swift */; };
 		15BF7FE92AE19BC5004C3A62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15BF7FE82AE19BC5004C3A62 /* Assets.xcassets */; };
 		15BF7FEC2AE19BC5004C3A62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15BF7FEB2AE19BC5004C3A62 /* Preview Assets.xcassets */; };
+		15BF7FF72AE1AA1A004C3A62 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF7FF62AE1AA1A004C3A62 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		15BF7FE12AE19BC2004C3A62 /* StarWarsCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BF7FE42AE19BC2004C3A62 /* StarWarsCardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsCardsApp.swift; sourceTree = "<group>"; };
-		15BF7FE62AE19BC2004C3A62 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		15BF7FE62AE19BC2004C3A62 /* CardsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsListView.swift; sourceTree = "<group>"; };
 		15BF7FE82AE19BC5004C3A62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15BF7FEB2AE19BC5004C3A62 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		15BF7FF22AE19DFB004C3A62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		15BF7FF62AE1AA1A004C3A62 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +54,11 @@
 		15BF7FE32AE19BC2004C3A62 /* StarWarsCards */ = {
 			isa = PBXGroup;
 			children = (
+				15BF7FF22AE19DFB004C3A62 /* Info.plist */,
 				15BF7FE42AE19BC2004C3A62 /* StarWarsCardsApp.swift */,
-				15BF7FE62AE19BC2004C3A62 /* ContentView.swift */,
+				15BF7FF32AE1A897004C3A62 /* Model */,
+				15BF7FF42AE1A947004C3A62 /* View */,
+				15BF7FF52AE1A96B004C3A62 /* ViewModel */,
 				15BF7FE82AE19BC5004C3A62 /* Assets.xcassets */,
 				15BF7FEA2AE19BC5004C3A62 /* Preview Content */,
 			);
@@ -65,6 +71,29 @@
 				15BF7FEB2AE19BC5004C3A62 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		15BF7FF32AE1A897004C3A62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				15BF7FF62AE1AA1A004C3A62 /* Card.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		15BF7FF42AE1A947004C3A62 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				15BF7FE62AE19BC2004C3A62 /* CardsListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		15BF7FF52AE1A96B004C3A62 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +166,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15BF7FE72AE19BC2004C3A62 /* ContentView.swift in Sources */,
+				15BF7FE72AE19BC2004C3A62 /* CardsListView.swift in Sources */,
+				15BF7FF72AE1AA1A004C3A62 /* Card.swift in Sources */,
 				15BF7FE52AE19BC2004C3A62 /* StarWarsCardsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,9 +299,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"StarWarsCards/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StarWarsCards/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -297,9 +327,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"StarWarsCards/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StarWarsCards/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
