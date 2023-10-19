@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct CardsListView: View {
-    @State private var speciesArray = ["Hutt", "Ewok", "Wookiee", "Droid", "Human"]
+    
+    @StateObject private var cardsVM = CardsViewModel()
+    
     var body: some View {
         NavigationStack{
-            List(speciesArray, id: \.self, rowContent: { card in
+            List(cardsVM.cardsArray,id: \.self, rowContent: { card in
                 Text(card)
             })
             .listStyle(.plain)
