@@ -13,12 +13,14 @@ struct Card: Identifiable, Codable {
     var classification: String
     var designation: String
     var average_height: String
+    var average_lifespan: String
+    var language: String
     var skin_colors: String
-    var heir_colors: String
+    var hair_colors: String
     var eye_colors: String
     
     enum CodingKeys: CodingKey {
-        case name, classification, designation, average_height, skin_colors, heir_colors, eye_colors
+        case name, classification, designation, average_height, average_lifespan, language, skin_colors, hair_colors, eye_colors
     }
 
 }
