@@ -63,14 +63,41 @@ struct DetailView: View {
                         .bold()
                     Text(card.eye_colors)
                 }
-        
+                
             }
             .font(.title2)
+            
+            VStack {
+                AsyncImage(url: URL(string: returnCardUrl())) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(15)
+                        .shadow(radius: 15)
+                        .animation(.default, value: image)
+                    
+                } placeholder: {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(15)
+                        .shadow(radius: 15)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            
             
             Spacer()
             
         }
         .padding()
+        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    func returnCardUrl() -> String {
+        var newName = card.name.replacingOccurrences(of: " ", with: "-")
+        newName = newName.replacingOccurrences(of: "'", with: "")
+        return "https://gallaugher.com/wp-content/uploads/2023/04/\(newName).jpg"
     }
 }
 
@@ -79,3 +106,5 @@ struct DetailView_Previews: PreviewProvider {
         DetailView(card: Card(name: "Antony", classification: "Human", designation: "Coding", average_height: "186", average_lifespan: "36", language: "Swift", skin_colors: "various", hair_colors: "various", eye_colors: "blue, green, brown, black, hzel, grey"))
     }
 }
+
+//https://gallaugher.com/wp-content/uploads/2023/04/name.jpeg
