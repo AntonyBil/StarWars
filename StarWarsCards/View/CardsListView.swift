@@ -15,16 +15,23 @@ struct CardsListView: View {
         NavigationStack{
             ZStack {
                 List(cardsVM.cardsArray) { card in
-                    NavigationLink {
-                        DetailView(card: card)
-                    } label: {
-                        Text(card.name.capitalized)
-                            .font(.title2)
+                    LazyVStack {
+                        NavigationLink {
+                            DetailView(card: card)
+                        } label: {
+                            Text(card.name.capitalized)
+                                .font(.title2)
+                        }
+                    }
+            
+                    .task {
+                        await
+                        cardsVM.loadNextIfNeeded(card:card)
                     }
                 }
                 .listStyle(.plain)
                 .font(.title)
-            .navigationTitle("Cards")
+                .navigationTitle("Cards")
                 
                 if cardsVM.isLoading {
                     ProgressView()
@@ -33,6 +40,21 @@ struct CardsListView: View {
                 }
                 
             }
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Button("Load All") {
+                        Task {
+                            await
+                            cardsVM.loadAll()
+                        }
+                    }
+                }
+                ToolbarItem(placement: .status) {
+                    Text("\(cardsVM.cardsArray.count) Cards Returned")
+                    
+                }
+            }
+            
             
             
             

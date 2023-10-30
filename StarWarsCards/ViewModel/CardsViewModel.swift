@@ -47,5 +47,24 @@ class CardsViewModel: ObservableObject {
         }
     }
     
+    func loadNextIfNeeded(card: Card) async {
+        guard let lastCard = cardsArray.last else {
+            return
+        }
+        
+        if card.id == lastCard.id && urlString.hasPrefix("http") {
+            Task{
+                await getData()
+            }
+        }
+    }
+    
+    func loadAll() async {
+        guard urlString.hasPrefix("http") else { return }
+        
+        await getData()
+        await loadAll()
+    }
+    
     
 }
