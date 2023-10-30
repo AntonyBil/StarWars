@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import AVFAudio
 
 struct CardsListView: View {
     
     @StateObject private var cardsVM = CardsViewModel()
+    @State private var audioPlayer: AVAudioPlayer!
+    @State private var lastSound = -1
+    
     
     var body: some View {
         NavigationStack{
@@ -53,6 +57,22 @@ struct CardsListView: View {
                     Text("\(cardsVM.cardsArray.count) Cards Returned")
                     
                 }
+                ToolbarItem(placement: .bottomBar) {
+                    Button {
+                        var nextSound: Int
+                        repeat {
+                            nextSound = Int.random(in: 0...8)
+                        }while nextSound == lastSound
+                        lastSound = nextSound
+                        playSound(soundName: "\(lastSound)")
+                    } label: {
+                        Image("peek")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 25)
+                    }
+
+                }
             }
             
             
@@ -64,6 +84,19 @@ struct CardsListView: View {
             await cardsVM.getData()
         }
         
+    }
+    
+    func playSound(soundName: String) {
+        guard let soundFile = NSDataAsset(name: soundName) else {
+            print("Culd not reed file name \(soundName)")
+            return
+        }
+        do {
+            audioPlayer = try AVAudioPlayer(data: soundFile.data)
+            audioPlayer.play()
+        } catch {
+            print("Error: \(error.localizedDescription)")
+        }
     }
 }
 
