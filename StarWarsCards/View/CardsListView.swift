@@ -13,17 +13,29 @@ struct CardsListView: View {
     
     var body: some View {
         NavigationStack{
-            List(cardsVM.cardsArray) { card in
-                NavigationLink {
-                    DetailView(card: card)
-                } label: {
-                    Text(card.name.capitalized)
-                        .font(.title2)
+            ZStack {
+                List(cardsVM.cardsArray) { card in
+                    NavigationLink {
+                        DetailView(card: card)
+                    } label: {
+                        Text(card.name.capitalized)
+                            .font(.title2)
+                    }
                 }
-            }
-            .listStyle(.plain)
-            .font(.title)
+                .listStyle(.plain)
+                .font(.title)
             .navigationTitle("Cards")
+                
+                if cardsVM.isLoading {
+                    ProgressView()
+                        .scaleEffect(4)
+                        .tint(.green)
+                }
+                
+            }
+            
+            
+            
             
         }
         .task {

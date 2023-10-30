@@ -16,13 +16,16 @@ class CardsViewModel: ObservableObject {
     }
     
     @Published var cardsArray: [Card] = []
+    @Published var isLoading = false
     var urlString = "https://swapi.dev/api/species/"
     
     func getData() async {
         print("🕸 We are accessing the url \(urlString)")
+        isLoading = true
         
         guard let url = URL(string: urlString) else {
             print("🚫ERROR: Could not create a URL from \(urlString)")
+            isLoading = false
             return
         }
         
@@ -31,12 +34,15 @@ class CardsViewModel: ObservableObject {
             
             guard let returned = try? JSONDecoder().decode(Returned.self, from: data) else {
                 print("🚫 JSON ERROR: Could not decode returned JSON data")
+                isLoading = false
                 return
             }
             self.urlString = returned.next ?? ""
             self.cardsArray = self.cardsArray + returned.results
+            isLoading = false
             
         } catch {
+            isLoading = false
             print("🚫 ERROR: Could not use URL at \(urlString) to get data and response")
         }
     }
